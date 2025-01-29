@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Dicoding Event</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="finished">Finished</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="home">Home</string>
+    <string name="search_event">Search Event</string>
+    <string name="search">Search</string>
+    <string name="upcoming_event">Upcoming Event</string>
+    <string name="finished_event">Finished Event</string>
+    <string name="data_is_empty">Data Is Empty</string>
+    <string name="you_search">You search:</string>
+    <string name="event_found_0">Event Found: 0</string>
+    <string name="data_empty">Data Empty</string>
+    <string name="todo">TODO</string>
+    <string name="ini_title">INI TITLE</string>
+    <string name="event_telah_selesai_belum_selesai">Event Telah Selesai / belum selesai</string>
+    <string name="deskripsi">Deskripsi</string>
+    <string name="kapan_dan_dimana">Kapan dan dimana?</string>
+    <string name="_900_peserta_1000_kuota">900 peserta - 1000 kuota</string>
+    <string name="waktu_acara">Waktu Acara</string>
+    <string name="_24_jam">24 Jam</string>
+    <string name="jakarta">Jakarta</string>
+    <string name="register_now">Register Now</string>
+    <string name="_503_service_unavailable">503 Service Unavailable</string>
+    <string name="some_title">Some Title</string>
+</resources>
