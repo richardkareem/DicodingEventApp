@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.setting.SettingFragment">
+
+    <TextView
+        android:id="@+id/tv_setting_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="end"
+        android:text="@string/dark_mode"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/sw_setting_theme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/tv_setting_detail_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="end"
+        android:text="@string/enable_dark_mode"
+        android:textStyle="normal"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_setting_theme"
+        app:layout_constraintStart_toStartOf="@id/tv_setting_theme"
+
+   />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/sw_setting_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_setting_theme"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_setting_detail_theme"
+
+        />
+
+    <TextView
+        android:id="@+id/tv_setting_broadcast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="64dp"
+        android:gravity="end"
+        android:text="@string/daily_reminder"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/sw_setting_theme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_setting_detail_theme"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tv_setting_detail_broadcast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="end"
+        android:text="@string/enable_daily_reminder"
+        android:textStyle="normal"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_setting_broadcast"
+        app:layout_constraintStart_toStartOf="@id/tv_setting_broadcast"
+
+
+        />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/sw_setting_broadcast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_setting_broadcast"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_setting_detail_broadcast"
+
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
