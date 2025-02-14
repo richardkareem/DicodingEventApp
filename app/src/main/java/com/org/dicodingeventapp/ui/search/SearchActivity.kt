@@ -7,14 +7,13 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.org.dicodingeventapp.data.remote.response.ListEventsItem
 import com.org.dicodingeventapp.databinding.ActivitySearchBinding
-import com.org.dicodingeventapp.service.data.response.ListEventsItem
 import com.org.dicodingeventapp.ui.EventAdapter
 import com.org.dicodingeventapp.ui.detailEvent.DetailEventActivity
 
 class SearchActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySearchBinding
-    private val searchViewModel : SearchViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
@@ -30,10 +29,14 @@ class SearchActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         binding.rvEventSearch.layoutManager = layoutManager
 
+        val searchFactory = SearchViewModelFactory.getInstance(this)
+        val searchViewModel : SearchViewModel by viewModels{
+            searchFactory
+        }
+
         if(query != ""){
             searchViewModel.fetchFindEventyQuery(query!!)
         }
-
         searchViewModel.listEventsItem.observe(this){ listEvents ->
             setEventData(listEvents)
             val teks = "Event Found: ${listEvents.size}"
@@ -55,6 +58,7 @@ class SearchActivity : AppCompatActivity() {
         }
 
     }
+
 
     private fun setLoading(isLoading: Boolean){
         if(isLoading)binding.loadingSearchActivity.visibility = View.VISIBLE

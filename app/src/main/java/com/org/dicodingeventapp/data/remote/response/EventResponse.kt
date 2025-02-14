@@ -1,4 +1,4 @@
-package com.org.dicodingeventapp.service.data.response
+package com.org.dicodingeventapp.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 data class EventResponse(

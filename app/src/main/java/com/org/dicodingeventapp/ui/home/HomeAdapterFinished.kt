@@ -7,16 +7,14 @@ import com.bumptech.glide.Glide
 import com.org.dicodingeventapp.data.remote.response.ListEventsItem
 import com.org.dicodingeventapp.databinding.CardItemHomeBinding
 
-class HomeAdapter(
+class HomeAdapterFinished(
     private val listEvent : List<ListEventsItem>
-) : RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
+) : RecyclerView.Adapter<HomeAdapterFinished.MyViewHolder>() {
 
     var onItemClickCallback : OnItemClickCallback? = null
 
-    //
-    class MyViewHolder(val binding : CardItemHomeBinding): RecyclerView.ViewHolder(binding.root){
 
-    }
+    class MyViewHolder(val binding : CardItemHomeBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = CardItemHomeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -37,13 +35,11 @@ class HomeAdapter(
             .into(holder.binding.ivCoverHome)
         holder.itemView.setOnClickListener {
             onItemClickCallback?.onItemClicked(event.id.toString())
-
         }
     }
+
 
     interface OnItemClickCallback {
         fun onItemClicked(id: String)
     }
-
-
 }

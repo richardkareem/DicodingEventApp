@@ -1,7 +1,7 @@
-package com.org.dicodingeventapp.service.data.retrofit
+package com.org.dicodingeventapp.data.remote.retrofit
 
-import com.org.dicodingeventapp.service.data.response.DetailEventResponse
-import com.org.dicodingeventapp.service.data.response.EventResponse
+import com.org.dicodingeventapp.data.remote.response.DetailEventResponse
+import com.org.dicodingeventapp.data.remote.response.EventResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -23,7 +23,8 @@ interface ApiService {
         @Query("q") query : String
     ) : Call<EventResponse>
 
-
+    @GET("events?active=-1&limit=1")
+    fun getEventByWorkerManager(): Call<EventResponse>
 //    @FormUrlEncoded
 //    @Headers("Authorization: token 12345")
 //    @POST("review")

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -11,13 +12,13 @@
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/rv_horizontal_home"
-        app:layout_constraintTop_toTopOf="@+id/rv_horizontal_home" />
+        app:layout_constraintStart_toStartOf="@+id/rv_finished_home"
+        app:layout_constraintTop_toTopOf="@+id/rv_finished_home" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/searchView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:hint="@string/search_event"
@@ -39,12 +40,11 @@
         />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_upcoming_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="font/poppins"
         android:text="@string/upcoming_event"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -52,7 +52,29 @@
         app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_vertical_home"
+        android:id="@+id/rv_upcoming_home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_upcoming_home" />
+
+
+    <TextView
+        android:id="@+id/tv_finished_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/finished_event"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rv_upcoming_home" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_finished_home"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
@@ -63,19 +85,6 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_finished_home" />
 
     <TextView
-        android:id="@+id/tv_finished_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="font/poppins"
-        android:text="@string/finished_event"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_horizontal_home" />
-
-    <TextView
         android:id="@+id/tvDataEmptyHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -83,10 +92,10 @@
         android:visibility="gone"
         android:text="@string/data_is_empty"
         android:textSize="21sp"
-        app:layout_constraintBottom_toBottomOf="@+id/rv_horizontal_home"
-        app:layout_constraintEnd_toEndOf="@+id/rv_horizontal_home"
-        app:layout_constraintStart_toStartOf="@+id/rv_horizontal_home"
-        app:layout_constraintTop_toTopOf="@+id/rv_horizontal_home" />
+        app:layout_constraintBottom_toBottomOf="@+id/rv_upcoming_home"
+        app:layout_constraintEnd_toEndOf="@+id/rv_upcoming_home"
+        app:layout_constraintStart_toStartOf="@+id/rv_upcoming_home"
+        app:layout_constraintTop_toTopOf="@+id/rv_upcoming_home" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -94,19 +103,12 @@
         android:text="@string/data_is_empty"
         android:visibility="gone"
         android:textSize="21sp"
-        app:layout_constraintBottom_toBottomOf="@+id/rv_vertical_home"
-        app:layout_constraintEnd_toEndOf="@+id/rv_horizontal_home"
-        app:layout_constraintStart_toStartOf="@+id/rv_horizontal_home"
-        app:layout_constraintTop_toTopOf="@+id/rv_vertical_home" />
+        app:layout_constraintBottom_toBottomOf="@+id/rv_finished_home"
+        app:layout_constraintEnd_toEndOf="@+id/rv_upcoming_home"
+        app:layout_constraintStart_toStartOf="@+id/rv_upcoming_home"
+        app:layout_constraintTop_toTopOf="@+id/rv_finished_home" />
 
-    <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/rv_horizontal_home"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textView" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

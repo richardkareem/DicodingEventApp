@@ -1,54 +1,25 @@
 
 package com.org.dicodingeventapp.ui.detailEvent
 
-import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.org.dicodingeventapp.service.data.response.DetailEventResponse
-import com.org.dicodingeventapp.service.data.response.Event
-import com.org.dicodingeventapp.service.data.retrofit.ApiConfig
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.org.dicodingeventapp.data.local.entity.EventEntity
+import com.org.dicodingeventapp.data.remote.response.Event
+import com.org.dicodingeventapp.data.repository.EventRepository
 
-class DetailEventViewModel : ViewModel() {
-    private companion object {
-        private val TAG = DetailEventActivity::class.java.simpleName
-    }
+class DetailEventViewModel(private var eventRepository: EventRepository) : ViewModel() {
 
-    private val _detailEvent = MutableLiveData<Event>()
-    val detailEvent : LiveData<Event> = _detailEvent
+     fun getDetailEvent(id:String) = eventRepository.getDetailEvent(id)
 
-    private val _isLoading =  MutableLiveData<Boolean>()
-    val isLoading : LiveData<Boolean> = _isLoading
+     fun getFavorite(id:String) = eventRepository.getEventDbById(id)
 
-    private val _isError = MutableLiveData<Boolean>()
-    val isError : LiveData<Boolean> = _isError
-     fun getDetailEvent(id:String){
-         _isLoading.value = true
-        val client = ApiConfig.getApiService().getDetailEvent(id)
-        client.enqueue(object : Callback<DetailEventResponse>{
-            override fun onResponse(
-                call: Call<DetailEventResponse>,
-                response: Response<DetailEventResponse>
-            ) {
-                _isLoading.value = false
-                val res = response.body()
-                if(res != null){
-                    _detailEvent.value = res.event
 
-                }else{
-                    Log.d(TAG, "on fialed: ${response.message()}")
-                }
-            }
+     fun insertFavorite(event: Event) = eventRepository.insertEventToDb(event)
+     fun deleteFavoriteEvent(id:String) = eventRepository.deleteEvent(id)
+     //
+     fun onUnFavorite (eventEntity: EventEntity) = eventRepository.updateEvent(eventEntity, 0)
+     fun onFavorite (eventEntity: EventEntity)=
+          eventRepository.updateEvent(eventEntity, 1)
 
-            override fun onFailure(call: Call<DetailEventResponse>, t: Throwable) {
-                _isLoading.value = false
-                _isError.value = true
-                Log.d(TAG, "onFailure: ${t.message}")
-            }
+     fun getDetailEventById(id:String) = eventRepository.getDetailEventById(id)
 
-        })
-    }
 }

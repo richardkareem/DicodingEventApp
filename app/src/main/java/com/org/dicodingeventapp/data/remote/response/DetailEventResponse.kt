@@ -1,4 +1,4 @@
-package com.org.dicodingeventapp.service.data.response
+package com.org.dicodingeventapp.data.remote.response
 data class DetailEventResponse(
 	val error: Boolean,
 	val message: String,

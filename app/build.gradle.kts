@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.android)
     //safe args
     id("androidx.navigation.safeargs")
+    //ksp
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -29,11 +31,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     buildFeatures {
         viewBinding = true
@@ -41,6 +43,17 @@ android {
 }
 
 dependencies {
+    //WORKMANAGER
+    implementation(libs.androidx.work.runtime)
+    //DATASTORE
+    implementation(libs.androidx.datastore.preferences)
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
+    //
+    implementation(libs.protolite.well.known.types)
+    //ROOM DB
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.runtime)
     //FOTO
     implementation(libs.glide)
     //https req

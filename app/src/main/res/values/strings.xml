@@ -24,4 +24,20 @@
     <string name="register_now">Register Now</string>
     <string name="_503_service_unavailable">503 Service Unavailable</string>
     <string name="some_title">Some Title</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="favorite">Favorite</string>
+    <string name="setting">Setting</string>
+    <string name="seminar">Seminar</string>
+    <string name="icon_love">icon_love</string>
+    <string name="detail_deskripsi">Detail Deskripsi</string>
+    <string name="icon_organizer">icon_organizer</string>
+    <string name="icon_quota">icon_quota</string>
+    <string name="ic_calendar">ic_calendar</string>
+    <string name="ic_place">ic_place</string>
+    <string name="penyelenggara">Penyelenggara</string>
+    <string name="ic_no_data">ic_no_data</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="enable_dark_mode">Enable dark mode</string>
+    <string name="daily_reminder">Daily Reminder</string>
+    <string name="enable_daily_reminder">Enable daily reminder</string>
 </resources>

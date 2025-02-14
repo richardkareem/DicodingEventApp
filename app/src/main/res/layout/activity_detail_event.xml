@@ -56,8 +56,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:textSize="11sp"
-                android:text="Seminar"
-                android:textColor="@color/purple_700"
+                android:text="@string/seminar"
+                android:textColor="?attr/colorAccent"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_status"
                 app:layout_constraintStart_toEndOf="@+id/tv_status"
                 app:layout_constraintTop_toTopOf="@+id/tv_status" />
@@ -74,6 +74,22 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_status"
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fb_favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:contentDescription="@string/icon_love"
+                app:fabSize="normal"
+                app:layout_anchor="@id/iv_description"
+                app:layout_anchorGravity="bottom|end"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_description"
+                app:layout_constraintEnd_toEndOf="@+id/iv_description"
+                app:srcCompat="@drawable/ic_favorite"
+
+                />
 
             <TextView
                 android:id="@+id/tv_description_section"
@@ -93,7 +109,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Detail Deskripsi"
+                android:text="@string/detail_deskripsi"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iv_description" />
@@ -103,9 +119,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:contentDescription="@string/icon_organizer"
                 android:src="@drawable/ic_organizer"
                 app:layout_constraintStart_toStartOf="@+id/textView7"
-                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                app:layout_constraintTop_toBottomOf="@+id/textView7"
+                app:tint="?attr/colorPrimary" />
 
             <TextView
                 android:id="@+id/tv_quota"
@@ -116,16 +134,21 @@
 
                 app:layout_constraintBottom_toBottomOf="@+id/imageView2"
                 app:layout_constraintStart_toEndOf="@+id/imageView2"
-                app:layout_constraintTop_toTopOf="@+id/imageView2" />
+                app:layout_constraintTop_toTopOf="@+id/imageView2"
+
+                />
 
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:contentDescription="@string/icon_quota"
                 android:src="@drawable/ic_quota"
                 app:layout_constraintStart_toStartOf="@+id/imageView"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:tint="?attr/colorPrimary"
+                />
 
 
             <TextView
@@ -148,9 +171,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:contentDescription="@string/ic_calendar"
                 android:src="@drawable/ic_calendar"
                 app:layout_constraintStart_toStartOf="@+id/imageView2"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                app:tint="?attr/colorPrimary"
+                />
 
             <TextView
                 android:id="@+id/location"
@@ -168,16 +194,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:contentDescription="@string/ic_place"
                 android:src="@drawable/ic_place"
                 app:layout_constraintStart_toStartOf="@+id/imageView4"
-                app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                app:tint="?attr/colorPrimary"
+                />
 
             <TextView
                 android:id="@+id/tv_organizer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Penyelenggara"
+                android:text="@string/penyelenggara"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView4"
                 app:layout_constraintStart_toEndOf="@+id/imageView4"
                 app:layout_constraintTop_toTopOf="@+id/imageView4" />
@@ -203,6 +232,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:visibility="gone"
                 />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

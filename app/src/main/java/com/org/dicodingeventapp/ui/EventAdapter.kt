@@ -1,13 +1,15 @@
 package com.org.dicodingeventapp.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.org.dicodingeventapp.data.remote.response.ListEventsItem
 import com.org.dicodingeventapp.databinding.CardItemDashboardBinding
-import com.org.dicodingeventapp.service.data.response.ListEventsItem
+
 class EventAdapter : ListAdapter<ListEventsItem, EventAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     private lateinit var onItemClickCallback : OnClickCallback
@@ -52,6 +54,7 @@ class EventAdapter : ListAdapter<ListEventsItem, EventAdapter.MyViewHolder>(DIFF
                 return  oldItem == newItem
             }
 
+            @SuppressLint("DiffUtilEquals")
             override fun areContentsTheSame(
                 oldItem: ListEventsItem,
                 newItem: ListEventsItem

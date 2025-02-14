@@ -7,18 +7,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.org.dicodingeventapp.data.remote.response.ListEventsItem
+import com.org.dicodingeventapp.data.repository.Result
 import com.org.dicodingeventapp.databinding.FragmentUpcomingBinding
-import com.org.dicodingeventapp.service.data.response.ListEventsItem
 import com.org.dicodingeventapp.ui.EventAdapter
 
 class UpcomingFragment : Fragment() {
 
     private var _binding: FragmentUpcomingBinding ? = null
     private val binding get()= _binding!!
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val upcomingViewModel : UpcomingViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,34 +30,38 @@ class UpcomingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val factory = UpcomingViewModelFactory.getInstance(requireContext())
+        val upcomingViewModel : UpcomingViewModel by viewModels{
+            factory
+        }
+
         //set recycle view
         val layoutManager = LinearLayoutManager(requireContext())
         binding.rvUpcoming.layoutManager = layoutManager
-        //call view model listEvent
-        upcomingViewModel.upcomingEvent.observe(viewLifecycleOwner){ listEventData ->
-            setEventData(listEventData)
 
-        }
-        upcomingViewModel.isLoading.observe(viewLifecycleOwner){isLoading ->
-            binding.loadingUpcoming.visibility = if(isLoading) View.VISIBLE else View.INVISIBLE
-        }
-
-        upcomingViewModel.isError.observe(viewLifecycleOwner){isError ->
-            if(isError){
-                binding.upcoming503.card503.visibility = View.VISIBLE
-            }else{
-                binding.upcoming503.card503.visibility = View.GONE
+        upcomingViewModel.getUpcomingEvent().observe(viewLifecycleOwner){res ->
+            if(res != null){
+                when(res){
+                    is Result.Error -> {
+                        onLoading(false)
+                        onError(true)
+                    }
+                    is Result.Success -> {
+                        onLoading(false)
+//                        setEventData(res.data)
+                    }
+                    Result.isEmpty -> {
+                        onLoading(false)
+                        onDataEmpty(true)
+                    }
+                    Result.loading -> {
+                        onLoading(true)
+                    }
+                }
             }
 
-
         }
-
-        upcomingViewModel.isDataEmpty.observe(viewLifecycleOwner){isDataEmpty ->
-            if(isDataEmpty)binding.constraintFinishedDataEmpty.visibility = View.VISIBLE
-            else binding.constraintFinishedDataEmpty.visibility = View.GONE
-        }
-
-
     }
 
     //function set data recycle view
@@ -74,10 +75,27 @@ class UpcomingFragment : Fragment() {
                 val toDetailEvent = UpcomingFragmentDirections.actionNavigationUpcomingToDetailEventActivity()
                 toDetailEvent.queryId = data.id.toString()
                 view?.findNavController()?.navigate(toDetailEvent)
-
             }
 
+
         })
+    }
+
+    private fun onError(isError: Boolean){
+        if(isError){
+                binding.upcoming503.card503.visibility = View.VISIBLE
+            }else{
+                binding.upcoming503.card503.visibility = View.GONE
+            }
+    }
+
+    private fun onDataEmpty(isEmpty: Boolean){
+        if(isEmpty)binding.constraintFinishedDataEmpty.visibility = View.VISIBLE
+            else binding.constraintFinishedDataEmpty.visibility = View.GONE
+    }
+
+    private fun onLoading(isLoading: Boolean){
+        binding.loadingUpcoming.visibility = if(isLoading) View.VISIBLE else View.INVISIBLE
     }
 
     override fun onDestroyView() {
